@@ -40,14 +40,14 @@ RUN set -xo pipefail \
       && mkdir ${CSGO_DIR} \
       #&& chown -R steam:steam ${STEAM_DIR} \
       && chown root -R ${STEAM_DIR} \
-      && chmod +x "${STEAM_DIR}/start.sh" \
+      && chmod 755 -R "${STEAM_DIR}" \
       && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-COPY --chown=root:root containerfs ${STEAM_DIR}/
+COPY start.sh ${STEAM_DIR}/
 
 USER root
 WORKDIR ${CSGO_DIR}
