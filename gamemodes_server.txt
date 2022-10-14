@@ -1,0 +1,44 @@
+// To use this file, rename it to GameModes_Server.txt
+//
+// Values here override the default gamemodes.txt 
+
+"GameModes_Server.txt"
+{
+	"gameTypes"
+	{
+		"classic"
+		{
+			"gameModes"
+			{
+				"competitive"
+				{
+					"exec"
+					{
+						"exec"								"esl5on5.cfg"
+					}
+					"mapgroupsMP"						// Liste der mapgroups, die für diesen Modus möglich sind					{
+						"mg_butterlan"		""
+					}
+				}
+			}	
+		}
+	}
+
+	"mapgroups"
+	{
+		"mg_butterlan"									// mapgroup definition
+		{
+			"name"			"mg_butterlan"
+			"maps"
+			{
+				"de_dust2"		""
+				"de_nuke"		""
+				"de_train"		""
+				"de_inferno"		""
+				"de_aztec"		""
+				"cs_italy"			""
+				"cs_office"			""
+			}
+		}
+	}
+}

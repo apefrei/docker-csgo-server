@@ -23,7 +23,6 @@ RUN set -xo pipefail \
           curl \
           unzip \
       && locale-gen en_US.UTF-8 \
-      #&& adduser --disabled-password --gecos "" steam \
       && mkdir -p ${STEAMCMD_DIR} \
       && cd ${STEAMCMD_DIR} \
       && curl -sSL ${STEAMCMD_URL} | tar -zx -C ${STEAMCMD_DIR} \
@@ -38,7 +37,6 @@ RUN set -xo pipefail \
             echo 'quit'; \
         } > ${STEAM_DIR}/autoupdate_script.txt \
       && mkdir ${CSGO_DIR} \
-      #&& chown -R steam:steam ${STEAM_DIR} \
       && chown root -R ${STEAM_DIR} \
       && chmod 755 -R "${STEAM_DIR}" \
       && rm -rf /var/lib/apt/lists/*
@@ -48,6 +46,8 @@ ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
 COPY start.sh ${STEAM_DIR}/
+COPY esl5on5.cfg ${CSGO_DIR}/cfg
+COPY gamemodes_server.txt ${CSGO_DIR}
 
 USER root
 WORKDIR ${CSGO_DIR}
