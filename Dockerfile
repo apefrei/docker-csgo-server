@@ -39,6 +39,7 @@ RUN set -xo pipefail \
         } > ${STEAM_DIR}/autoupdate_script.txt \
       && mkdir ${CSGO_DIR} \
       && chown -R steam:steam ${STEAM_DIR} \
+      && chmod -R 755 ${STEAM_DIR} \
       && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=en_US.UTF-8 \
