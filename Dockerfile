@@ -2,10 +2,10 @@ FROM ubuntu:bionic
 
 ENV TERM xterm
 
-ENV STEAM_DIR /home/steam
-ENV STEAMCMD_DIR /home/steam/steamcmd
+ENV STEAM_DIR /opt/steam
+ENV STEAMCMD_DIR /opt/steam/steamcmd
 ENV CSGO_APP_ID 740
-ENV CSGO_DIR /home/steam/csgo
+ENV CSGO_DIR /opt/steam/csgo
 
 SHELL ["/bin/bash", "-c"]
 
@@ -24,7 +24,7 @@ RUN set -xo pipefail \
           unzip \
       && locale-gen en_US.UTF-8 \
       #&& adduser --disabled-password --gecos "" steam \
-      && mkdir ${STEAMCMD_DIR} \
+      && mkdir -p ${STEAMCMD_DIR} \
       && cd ${STEAMCMD_DIR} \
       && curl -sSL ${STEAMCMD_URL} | tar -zx -C ${STEAMCMD_DIR} \
       && mkdir -p ${STEAM_DIR}/.steam/sdk32 \
