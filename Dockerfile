@@ -38,7 +38,8 @@ RUN set -xo pipefail \
             echo 'quit'; \
         } > ${STEAM_DIR}/autoupdate_script.txt \
       && mkdir ${CSGO_DIR} \
-      && chown -R steam:steam ${STEAM_DIR} \
+      #&& chown -R steam:steam ${STEAM_DIR} \
+      && chown -R root:root ${STEAM_DIR} \
       && chmod -R 755 ${STEAM_DIR} \
       && rm -rf /var/lib/apt/lists/*
 
@@ -46,9 +47,9 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-COPY --chown=steam:steam containerfs ${STEAM_DIR}/
+COPY --chown=root:root containerfs ${STEAM_DIR}/
 
-USER steam
+USER root
 WORKDIR ${CSGO_DIR}
 VOLUME ${CSGO_DIR}
 ENTRYPOINT exec ${STEAM_DIR}/start.sh
