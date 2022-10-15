@@ -6,6 +6,7 @@ ENV STEAM_DIR /opt/steam
 ENV STEAMCMD_DIR /opt/steam/steamcmd
 ENV CSGO_APP_ID 740
 ENV CSGO_DIR /opt/steam/csgo
+ENV USECONFIG "esl5on5.cfg"
 
 SHELL ["/bin/bash", "-c"]
 

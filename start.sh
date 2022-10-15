@@ -93,6 +93,7 @@ writeip
 sv_mincmdrate $TICKRATE
 sv_maxupdaterate $TICKRATE
 sv_minupdaterate $TICKRATE
+exec $USECONFIG
 SERVERCFG
 
 else
