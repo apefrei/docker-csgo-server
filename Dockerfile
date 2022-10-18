@@ -6,7 +6,9 @@ ENV STEAM_DIR /opt/steam
 ENV STEAMCMD_DIR /opt/steam/steamcmd
 ENV CSGO_APP_ID 740
 ENV CSGO_DIR /opt/steam/csgo
-ENV USECONFIG "esl5on5.cfg"
+ENV USECONFIG "butterlan.cfg"
+ENV GAMEMODESURL "https://github.com/apefrei/butterlan-gameserver-configs/raw/main/csgo/gamemodes_server.txt"
+ENV CONFIGURL "https://github.com/apefrei/butterlan-gameserver-configs/raw/main/csgo/butterlan.cfg"
 
 SHELL ["/bin/bash", "-c"]
 
@@ -46,9 +48,12 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
+RUN curl ${GAMEMODESURL} --output ${CSGO_DIR}/gamemodes_server.txt
+RUN curl ${CONFIGURL} --output ${CSGO_DIR}/cfg/butterlan.cfg
+
 COPY start.sh ${STEAM_DIR}/
-COPY esl5on5.cfg ${CSGO_DIR}/cfg
-COPY gamemodes_server.txt ${CSGO_DIR}
+#COPY esl5on5.cfg ${CSGO_DIR}/cfg
+#COPY gamemodes_server.txt ${CSGO_DIR}
 
 USER root
 WORKDIR ${CSGO_DIR}
