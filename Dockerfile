@@ -2,10 +2,10 @@ FROM ubuntu:bionic
 
 ENV TERM xterm
 
-ENV STEAM_DIR /opt/steam
-ENV STEAMCMD_DIR /opt/steam/steamcmd
+ENV STEAM_DIR "/opt/steam"
+ENV STEAMCMD_DIR "/opt/steam/steamcmd"
 ENV CSGO_APP_ID 740
-ENV CSGO_DIR /opt/steam/csgo
+ENV CSGO_DIR "/opt/steam/csgo"
 ENV USECONFIG "butterlan.cfg"
 ENV GAMEMODESURL "https://raw.githubusercontent.com/apefrei/butterlan-gameserver-configs/main/csgo/gamemodes_server.txt"
 ENV CONFIGURL "https://raw.githubusercontent.com/apefrei/butterlan-gameserver-configs/main/csgo/butterlan.cfg"
@@ -48,12 +48,10 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-RUN curl ${GAMEMODESURL} --output ${CSGO_DIR}/gamemodes_server.txt
-RUN curl ${CONFIGURL} --output ${CSGO_DIR}/cfg/butterlan.cfg
+RUN curl ${GAMEMODESURL} --output ${CSGO_DIR}/gamemodes_server.txt --create-dirs
+RUN curl ${CONFIGURL} --output ${CSGO_DIR}/cfg/butterlan.cfg --create-dirs
 
 COPY start.sh ${STEAM_DIR}/
-#COPY esl5on5.cfg ${CSGO_DIR}/cfg
-#COPY gamemodes_server.txt ${CSGO_DIR}
 
 USER root
 WORKDIR ${CSGO_DIR}
