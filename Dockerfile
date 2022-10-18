@@ -7,8 +7,8 @@ ENV STEAMCMD_DIR /opt/steam/steamcmd
 ENV CSGO_APP_ID 740
 ENV CSGO_DIR /opt/steam/csgo
 ENV USECONFIG "butterlan.cfg"
-ENV GAMEMODESURL "https://github.com/apefrei/butterlan-gameserver-configs/raw/main/csgo/gamemodes_server.txt"
-ENV CONFIGURL "https://github.com/apefrei/butterlan-gameserver-configs/raw/main/csgo/butterlan.cfg"
+ENV GAMEMODESURL "https://raw.githubusercontent.com/apefrei/butterlan-gameserver-configs/main/csgo/gamemodes_server.txt"
+ENV CONFIGURL "https://raw.githubusercontent.com/apefrei/butterlan-gameserver-configs/main/csgo/butterlan.cfg"
 
 SHELL ["/bin/bash", "-c"]
 
