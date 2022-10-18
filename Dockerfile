@@ -39,17 +39,17 @@ RUN set -xo pipefail \
             echo 'app_update ${CSGO_APP_ID}'; \
             echo 'quit'; \
         } > ${STEAM_DIR}/autoupdate_script.txt \
-      && mkdir ${CSGO_DIR}/cfg \
+      && mkdir ${CSGO_DIR}/cfg/ \
       && chown root -R ${STEAM_DIR} \
-      && chmod 755 -R "${STEAM_DIR}" \
+      && chmod 755 -R ${STEAM_DIR} \
       && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-RUN curl ${GAMEMODESURL} --output ${CSGO_DIR}/gamemodes_server.txt --create-dirs
-RUN curl ${CONFIGURL} --output ${CSGO_DIR}/cfg/butterlan.cfg --create-dirs
+RUN curl ${GAMEMODESURL} --output ${CSGO_DIR}/gamemodes_server.txt
+RUN curl ${CONFIGURL} --output ${CSGO_DIR}/cfg/butterlan.cfg
 
 COPY start.sh ${STEAM_DIR}/
 
